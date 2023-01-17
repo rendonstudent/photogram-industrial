@@ -26,10 +26,8 @@
   </div>
 </div>
 
-<h2> <%= @user.username %>'s Photos </h2>
+<h2> <%= current_user.following.count %> Following </h2>
 
-<h2> <%= current_user.liked_photos.count %> Posted Photos </h2>
-
-<% current_user.own_photos.each do |photo| %>
-  <%= render "photos/photo", photo: photo %>
+<% current_user.fans.each do |follower| %>
+  <%= follower.username %>  
 <% end %>
