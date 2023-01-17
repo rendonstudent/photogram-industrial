@@ -9,7 +9,7 @@
       </li>
 
       <li class="nav-item">
-        <%= link_to "Liked Photos", liked_photos_path(@user.username), class: "nav-link" %>
+        <%= link_to "Liked Photos", user_path(@user.username), class: "nav-link" %>
       </li>
 
       <li class="nav-item">
@@ -26,11 +26,11 @@
   </div>
 </div>
 
-<h2> <%= @user.username %>'s Photos </h2>
+<h2> <%= @user.username %>'s Liked Photos </h2>
 
-<h2> <%= current_user.liked_photos.count %> Posted Photos </h2>
+<h2> <%= current_user.liked_photos.count %> Liked Photos </h2>
 
-<% current_user.own_photos.each do |photo| %>
+<% current_user.liked_photos.each do |photo| %>
   <div class="row mb-4">
     <div class="col-md-6 offset-md-3">
       
