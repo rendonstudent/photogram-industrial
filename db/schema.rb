@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 2023_01_17_185434) do
   create_table "follow_requests", force: :cascade do |t|
     t.bigint "recipient_id", null: false
     t.bigint "sender_id", null: false
-    t.string "status"
+    t.string "status", default: "pending"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["recipient_id"], name: "index_follow_requests_on_recipient_id"
@@ -63,7 +63,7 @@ ActiveRecord::Schema.define(version: 2023_01_17_185434) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.citext "username"
-    t.boolean "private"
+    t.boolean "private", default: true
     t.integer "likes_count", default: 0
     t.integer "comments_count", default: 0
     t.datetime "created_at", precision: 6, null: false
