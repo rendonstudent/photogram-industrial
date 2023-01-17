@@ -8,29 +8,29 @@ task sample_data: :environment do
   Photo.delete_all
   User.delete_all
 
-  usernames = Array.new { Faker::Name.first_name} # only to force two users for testing
+  # usernames = Array.new { Faker::Name.first_name} # only to force two users for testing
 
-  usernames << "alice"
-  usernames << "bob"
+  # usernames << "alice"
+  # usernames << "bob"
 
-  usernames.each do |username|
-    User.create(
-      email: "#{username}@example.com",
-      password: "password",
-      username: username.downcase,
-      private: [true, false].sample,
-    )
-  end
-  
-  #12.times do
-  # name = Faker::Name.first_name
-  #  User.create(
-  #     email: "#{name}@example.com",
-  #    password: "password",
-  #    username: name.downcase,
-  #    private: [true, false].sample,
+  # usernames.each do |username|
+  #   User.create(
+  #     email: "#{username}@example.com",
+  #     password: "password",
+  #     username: username.downcase,
+  #     private: [true, false].sample,
   #   )
   # end
+  
+  12.times do
+   name = Faker::Name.first_name
+    User.create(
+      email: "#{name}@example.com",
+      password: "password",
+      username: name.downcase,
+      private: [true, false].sample,
+     )
+   end
 
   users = User.all
 
@@ -81,4 +81,5 @@ task sample_data: :environment do
   p "There are now #{Photo.count} photos."
   p "There are now #{Like.count} likes."
   p "There are now #{Comment.count} comments."
+
 end
